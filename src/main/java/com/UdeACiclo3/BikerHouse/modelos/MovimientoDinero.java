@@ -12,7 +12,7 @@ public class MovimientoDinero {
     private String concepto;
     @ManyToOne
     @JoinColumn(name= "Movimientos_id" )
-    private Empleado usuario;
+    private Usuario usuario;
 
     //METODOS:
 
@@ -44,7 +44,8 @@ public class MovimientoDinero {
 
 //CONSTRUCTOR
 
-    public MovimientoDinero(long monto, String concepto, Empleado usuario) {
+
+    public MovimientoDinero(long monto, String concepto, Usuario usuario) {
         this.monto = monto;
         this.concepto = concepto;
         this.usuario = usuario;
@@ -75,11 +76,11 @@ public class MovimientoDinero {
         this.concepto = concepto;
     }
 
-    public Empleado getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Empleado usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 }
