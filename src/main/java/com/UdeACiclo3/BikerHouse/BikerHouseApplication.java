@@ -18,6 +18,20 @@ public class BikerHouseApplication {
 		return "Prueba Hola Mundo en la web";
 	}
 
+	@GetMapping("/testEmpresa")
+	public String testEmpresa(){
+		Empresa empresa=new Empresa("SinRuedas SA","calle 123","3103103100","1010105");
+		String nombre=empresa.LeerNombreEmpresa(empresa);
+		String nombreNew=empresa.ModificarNombreEmpresa(empresa, "Sin Frenos LTDA");
+		String dir=empresa.LeerDireccionEmpresa(empresa);
+		String dirNew=empresa.ModificarDireccionEmpresa("Calle falsa 567");
+		String tel=empresa.getTelefono();
+		String telNew=empresa.ModificarTelefonoEmpresa(empresa,"123456");
+		String nit=empresa.LeerNITEmpresa(empresa);
+		String nitNew=empresa.ModificarNITEmpresa(empresa,"000001");
+
+		return "-name:"+nombre +"----->nameNew: "+nombreNew+"----->dir:"+dir+"--->dirNew: "+dirNew+"--Tel: "+tel+"--->TelNew="+telNew+"---->nit:"+nit+"--->nitNew: "+nitNew;
+	}
 
 	@GetMapping("/testEmpleado")
 	public String testEmpleado(){
@@ -65,26 +79,9 @@ public class BikerHouseApplication {
 		return "Monto:"+monto+"--NewMonto:"+Newmonto+"--Concepto:"+concepto+"--NewConcepto:"+newConcepto;
 
 	}
-	@GetMapping("/testEmpresa")
-	public String testEmpresa(){
-		Empresa empresa=new Empresa("SinRuedas SA","calle 123","3103103100","1010105");
-		String nombre=empresa.LeerNombreEmpresa(empresa);
-		String nombreNew=empresa.ModificarNombreEmpresa(empresa, "Sin Frenos LTDA");
-		String dir=empresa.LeerDireccionEmpresa(empresa);
-		String dirNew=empresa.ModificarDireccionEmpresa("Calle falsa 567");
-		String tel=empresa.getTelefono();
-		String telNew=empresa.ModificarTelefonoEmpresa(empresa,"123456");
-		String nit=empresa.LeerNITEmpresa(empresa);
-		String nitNew=empresa.ModificarNITEmpresa(empresa,"000001");
-
-		return "-name:"+nombre +"----->nameNew: "+nombreNew+"----->dir:"+dir+"--->dirNew: "+dirNew+"--Tel: "+tel+"--->TelNew="+telNew+"---->nit:"+nit+"--->nitNew: "+nitNew;
-	}
-	/*
-	 */
+	
 	public static void main(String[] args) {
 		SpringApplication.run(BikerHouseApplication.class, args);
 		System.out.println("Hola Mundo");
-
 	}
-
 }
