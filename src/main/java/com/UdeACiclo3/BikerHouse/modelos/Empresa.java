@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "Empresa")
 public class Empresa {
     @Id // id en la base de datos
-    @GeneratedValue(strategy = GenerationType.AUTO) //Generar id de forma automatica
+    @GeneratedValue(strategy = GenerationType.AUTO) //Generar id de forma automática
     private int id;
     private String nombre;
     private String direccion;
