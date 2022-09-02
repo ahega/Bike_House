@@ -22,17 +22,16 @@ public class UsuarioService {
 
     //Metodo (servicio) para traer un usuario por ID
     public Usuario getUsuarioById(Integer id){
+
         return usuarioRepository.findById(id).get();
     }
 
     //Metodo (servicio) para guardar o actualizar un objeto
     //Crea y edita un objeto de tipo usuario
-    public boolean saveOrUpdateUsuario(Usuario usuario){
+    public Usuario saveOrUpdateUsuario(Usuario usuario){
         Usuario usuario1=usuarioRepository.save(usuario);
-        if(usuarioRepository.findById(usuario1.getId())!=null){
-            return true;
-        }
-        return false;
+        return usuario1;
+
     }
 
     //Metodo (servicio) para eliminar una empresa
