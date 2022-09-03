@@ -27,7 +27,7 @@ public class Empresa {
     public String LeerNombreEmpresa(Empresa empresa){
         return empresa.nombre;
     }
-  
+
     //Metodo modificar nombre empresa
     public String ModificarNombreEmpresa(Empresa empresa, String nuevoNombre){
         empresa.setNombre(nuevoNombre);
@@ -38,7 +38,7 @@ public class Empresa {
     public String LeerDireccionEmpresa(Empresa empresa){
         return empresa.direccion;
     }
-  
+
     //Metodo modificar nombre empresa
     public String ModificarDireccionEmpresa( String nuevaDireccion){
         setDireccion(nuevaDireccion);
@@ -49,18 +49,18 @@ public class Empresa {
     public String LeerTelefonoEmpresa(Empresa empresa){
         return empresa.getTelefono();
     }
-  
+
     //Metodo modificar telefono empresa
     public String ModificarTelefonoEmpresa(Empresa empresa, String nuevoTelefono){
         empresa.setTelefono(nuevoTelefono);
         return getTelefono();
     }
-  
+
     // Metodo Leer NIT Empresa
     public String LeerNITEmpresa(Empresa empresa){
         return empresa.getNIT();
     }
-  
+
     //Metodo modificar NIT Empresa
     public String ModificarNITEmpresa(Empresa empresa, String nuevoNIT){
         empresa.setNIT(nuevoNIT);

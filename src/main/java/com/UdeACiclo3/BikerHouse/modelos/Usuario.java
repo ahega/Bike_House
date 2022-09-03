@@ -3,7 +3,7 @@ package com.UdeACiclo3.BikerHouse.modelos;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Empleado")
+@Table(name="Usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -78,12 +78,12 @@ public class Usuario {
     }
 
     public String getRol() {
-            if (rol == "administrador" || rol == "operario") {
+            if (rol == "Administrador" || rol == "Operario") {
 
                 return rol;
             }
             else{
-                return "Error metodo getRol";
+                return null;
 
             }
 
