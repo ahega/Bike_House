@@ -45,6 +45,9 @@ public class MovimientoDinero {
 //CONSTRUCTOR
 
 
+    public MovimientoDinero() {
+    }
+
     public MovimientoDinero(long monto, String concepto, Usuario usuario) {
         this.monto = monto;
         this.concepto = concepto;
