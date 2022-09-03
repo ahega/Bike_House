@@ -1,10 +1,9 @@
-package controller;
+package com.UdeACiclo3.BikerHouse.controller;
 
-import com.UdeACiclo3.BikerHouse.Repository.EmpresaBike_House;
 import com.UdeACiclo3.BikerHouse.modelos.Empresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.EmpresaService;
+import com.UdeACiclo3.BikerHouse.service.EmpresaService;
 
 import java.util.List;
 
