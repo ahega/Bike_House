@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -28,9 +29,9 @@ public class UsuarioService {
 
     //Metodo (servicio) para guardar o actualizar un objeto
     //Crea y edita un objeto de tipo usuario
-    public Usuario saveOrUpdateUsuario(Usuario usuario){
-        Usuario usuario1=usuarioRepository.save(usuario);
-        return usuario1;
+    public Optional <Usuario> saveOrUpdateUsuario(Usuario usuario){
+        Usuario usuario2=usuarioRepository.save(usuario);
+        return usuarioRepository.findById(usuario2.getId());
 
     }
 

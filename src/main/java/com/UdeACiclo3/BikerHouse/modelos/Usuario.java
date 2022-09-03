@@ -3,7 +3,7 @@ package com.UdeACiclo3.BikerHouse.modelos;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Empleado")
+@Table(name="Usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
