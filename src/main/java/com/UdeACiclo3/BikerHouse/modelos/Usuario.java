@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Empleado")
-public class Usuario {
+public class    Usuario {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
@@ -100,5 +100,9 @@ public class Usuario {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public Usuario get() {
+        return null;
     }
 }

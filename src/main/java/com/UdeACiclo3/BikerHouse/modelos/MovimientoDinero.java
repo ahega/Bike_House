@@ -3,7 +3,7 @@ package com.UdeACiclo3.BikerHouse.modelos;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Movimientos")
+@Table(name = "Movimientos")
 public class MovimientoDinero {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -13,6 +13,9 @@ public class MovimientoDinero {
     @ManyToOne
     @JoinColumn(name= "Movimientos_id" )
     private Usuario usuario;
+
+    public MovimientoDinero() {
+    }
 
     //METODOS:
 
