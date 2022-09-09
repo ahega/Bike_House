@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service //Le decimos a Sprint Boot que esta clase es de servicios
 public class EmpresaService {
@@ -26,12 +27,10 @@ public class EmpresaService {
     }
 
     //Método para guardar o actualizar objetos de tipo Empresa
-    public boolean saveOrUpdateEmpresa(Empresa empresa){
+    public Empresa saveOrUpdateEmpresa(Empresa empresa){
         Empresa emp = empresaRepository.save(empresa);
-        if (empresaRepository.findById(emp.getId())!=null){
-            return true;
-        }
-        return false;
+       return emp;
+
     }
 
     //Método que me premita eliminar empresas resgiatradas tenciendo el id

@@ -29,47 +29,30 @@ public class UsuarioService {
 
     //Metodo (servicio) para guardar o actualizar un objeto
     //Crea y edita un objeto de tipo usuario
-    public Optional <Usuario> saveOrUpdateUsuario(Usuario usuario){
-        Usuario usuario2=usuarioRepository.save(usuario);
-        return usuarioRepository.findById(usuario2.getId());
+    public Usuario saveOrUpdateUsuario(Usuario usuario){
+        return usuarioRepository.save(usuario);
+
 
     }
 
     //Metodo (servicio) para eliminar una empresa
     public boolean deleteUsuario(Integer id){
         usuarioRepository.deleteById(id);
-        if(usuarioRepository.findById(id).get()!=null){  //== getUsuarioById(id)
+        //if(usuarioRepository.findById(id).get()!=null){  //== getUsuarioById(id)
+        if(usuarioRepository.findById(id).isPresent()){  //== getUsuarioById(id)
             return false;
         }
         return true;
     }
 
+    //Metodo para ver empleados por empresa
+
+    public ArrayList<Usuario> obtenerPorEmpresa(Integer id){
+        return usuarioRepository.findByEmpresa(id);
+    }
 
 }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///comentarios

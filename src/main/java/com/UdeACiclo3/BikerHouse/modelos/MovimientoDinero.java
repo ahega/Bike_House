@@ -11,11 +11,12 @@ public class MovimientoDinero {
     private long monto;
     private String concepto;
     @ManyToOne
-    @JoinColumn(name= "Movimientos_id" )
+    @JoinColumn(name= "usuario_id" )
     private Usuario usuario;
 
-
-    //METODOS:
+    public MovimientoDinero() {
+    }
+//METODOS:
 
     // Metodo leerMonto
 
