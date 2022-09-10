@@ -134,14 +134,15 @@ public class Controller {
     }
 
     @PostMapping("/enterprises/{id}/movements")
-    public Optional<MovimientoDinero> guardarMovimiento(@PathVariable("id") Integer id, @RequestBody MovimientoDinero mov) {
+    public MovimientoDinero guardarMovimiento(@PathVariable("id") Integer id, @RequestBody MovimientoDinero mov) {
         return movimientoDineroService.crearOActualizarMovimientoDinero(mov);
 
     }
 
     @PatchMapping("/enterprises/{id}/movements")
-    public Optional<MovimientoDinero> actualizarMovimientoDinero(@PathVariable("id") Integer id, @RequestBody MovimientoDinero mov) {
+    public MovimientoDinero actualizarMovimientoDinero(@PathVariable("id") Integer id, @RequestBody MovimientoDinero mov) {
         MovimientoDinero mov1 = movimientoDineroService.traerMovimientoDineroPorId(id);
+        //ArrayList mov1 = movimientoDineroService.obtenerMovimientoByEmpresa(id);
         mov1.setMonto(mov.getMonto());
         mov1.setConcepto(mov.getConcepto());
         mov1.setUsuario(mov.getUsuario());
