@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Usuarios </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        a{color:white;}
+        a:hover {color: black;text-decoration:none;}
+    </style>
+</head>
+<body>
+
+
+
+<div class="container" align="center">
+    <h2>Lista de Usuarios</h2>
+
+    <br>
+
+    <figure >
+
+        <img src="https://www.seekpng.com/png/detail/202-2022198_icono-administrador-de-usuario-iconos-de-administrador-png.png"
+             alt="The head and torso of a dinosaur skeleton; it has a large head with long sharp teeth"
+             width="200"
+             height="71"
+             title="A T-Rex on display in the Manchester University Museum">
+    </figure>
+
+    <br>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Empresa</th>
+            <th>Rol</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        <!-- llenamos la tabla-->
+        <tr th:each="usuario : ${emplelist}"> <!--dentro de emplelist hay usuarios-->
+            <td th:text="${usuario.id}"></td>
+            <td th:text="${usuario.nombre}"></td>
+            <td th:text="${usuario.correo}"></td>
+            <td th:text="${usuario.empresa.nombre}"></td>
+            <td th:text="${usuario.rol}"></td>
+            <td th:if="${usuario.rol=='1'}">Administrativo</td>
+            <td th:if="${usuario.rol=='2'}">Operativo</td>
+            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarUsuario/{id}(id=${usuario.id})}">Editar</a></button></td>
+            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarUsuario/{id}(id=${usuario.id})}">Eliminar</a></button></td>
+        </tr>
+    </table>
+
+
+    <td><button type="button" class="btn btn-danger"><a th:href="@{/AgregarUsuario}">Agregar Usuario</a></button></td>
+</div>
+
+
+
+
+</body>
+</html>
