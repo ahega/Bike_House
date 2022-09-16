@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Usuario </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        a{color:white;}
+        a:hover {color: black;text-decoration:none;}
+    </style>
+    <style>
+        body {
+height: 500px;
+  background-image: url("https://i.postimg.cc/hG4qwftR/Whats-App-Image-2022-09-14-at-7-45-08-PM.jpg");
+  background-repeat:no-repeat;
+  background-position-x:center;
+  background-position-y:8rem;
+  background-size: 50rem;
+  background-attachment: fixed;
+}
+    </style>
+</head>
+
+
+<body>
+
+<div class="container" align="center">
+    <h1>Actualizar datos del Usuario</h1>
+    <!-- <figure >
+    <br>
+
+
+        <img src="https://acortar.link/s2yCkG"
+             alt="The head and torso of a dinosaur skeleton; it has a large head with long sharp teeth"
+             width="150"
+             height="81"
+             title="A T-Rex on display in the Manchester University Museum">
+    </figure>
+
+    <br>
+-->
+    <br>
+    <br>
+    <div class='transparente'>
+
+    <div class="container">
+        <h3></h3>
+        <br>
+        <br>
+        <br>
+        <form th:action="@{/GuardarUsuario}" th:object="${user}" method="post">
+            <!--Campo para Id Usuario-->
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="id">ID del Usuario:</label>
+                    <div class="col-md-5">
+                        <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
+                </div>
+            </div>
+            <!--Campo para nombre-->
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="nombre">Nombre del Usuario:</label>
+                    <div class="col-md-5">
+                        <input type="text" th:field="*{nombre}" class="form-control" id="nombre" required="required"></div>
+                </div>
+            </div>
+            <!--Campo para email-->
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="correo">Correo del Usuario:</label>
+                    <div class="col-md-5">
+                        <input type="email" th:field="*{correo}" class="form-control" id="correo" required="required"></div>
+                </div>
+            </div>
+            <!--Campo para Empresa del Usuario-->
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="empresa">Empresa del Usuario:</label>
+                    <div class="col-md-5">
+                        <select th:field="*{empresa}" class="form-control" id="empresa" required="required">
+                            <option th:each="empresa : ${emprelist}" th:text="${empresa.nombre}" th:value="${empresa.id}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--Campo para Rol-->
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="rol">Rol del Usuario:</label>
+                    <div class="col-md-5">
+                        <select th:field="*{rol}" class="form-control" id="rol" required="required">
+                            <option th:value=1> Administrador </option>
+                            <option th:value=2> Operario </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!--Boton para enviar ejecutar el form y enviar todo -->
+            <div class="row">
+                <div class="col-md-2">
+                    <button class="btn btn-success">Actualizar Usuario</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    </div>
+
+
+</div>
+
+<style>
+.transparente{
+opacity: 0.8;
+-moz-opacity: 0.8;
+filter: alpha(opacity=80);
+-khtml-opacity: 0.8;
+}
+</style>
+
+
+
+
+</body>
+</html>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -49,4 +50,29 @@ public class ControllerUsuario {
         redirectAttributes.addFlashAttribute("mensaje","saveError");
         return "redirect:/AgregarUsuario";
     }
+
+    @GetMapping("/EditarUsuario/{id}")
+    public String editarUsuario(Model model, @PathVariable Integer id){
+        Usuario userNew=usuarioService.getUsuarioById(id);
+        model.addAttribute("user",userNew);
+        List<Empresa> listaEmpresas= empresaService.getAllEmpresas(); //envia lista de empresas al html agregarUsuario
+        model.addAttribute("emprelist",listaEmpresas);
+        return "editarUsuario";
+
+    }
+
+    @GetMapping("/EliminarUsuario/{id}")
+    public String eliminarUsuario(@PathVariable Integer id, RedirectAttributes redirectAttributes){
+        if(usuarioService.deleteUsuario(id)){
+            return "redirect:/VerUsuarios";
+        }
+    return "redirect:/VerUsuarios";
+
+    }
+
+
+
+
+
+
 }
