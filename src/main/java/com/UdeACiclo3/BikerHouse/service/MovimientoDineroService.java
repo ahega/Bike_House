@@ -25,10 +25,12 @@ public class MovimientoDineroService {
     }
     /*Editar/actualizar movimiento de Dinero de la lista; Si lo encontro id lo actualiza, si no lo crea*/
 
-    public Optional<MovimientoDinero> crearOActualizarMovimientoDinero(MovimientoDinero movimientoDinero){
-        MovimientoDinero movimientoDi= movimientoDineroRepository.save(movimientoDinero);
-         return movimientoDineroRepository.findById(movimientoDi.getId());
-
+    public boolean crearOActualizarMovimientoDinero(MovimientoDinero movimientoDinero){
+        MovimientoDinero mov= movimientoDineroRepository.save(movimientoDinero);
+        if(movimientoDineroRepository.findById(mov.getId())!=null){
+            return true;
+        }
+        return false;
     }
     /*Traer movimiento de dinero por id*/
     public MovimientoDinero traerMovimientoDineroPorId(Integer id){
