@@ -27,7 +27,7 @@
     <br>
 
     <form th:action="@{/GuardarMovimiento}" th:object="${mov}" method="post">
-        <!--Campo para Concepto-->
+
         <div class="row">
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="concepto">Concepto del Movimiento:</label>
@@ -90,6 +90,8 @@
     <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
 
 </div>
+
+<!-----Scrip para que la fecha este al dia---->
 <script th:inline="javascript">
   window.onload=function(){
   document.getElementById("fecha").value=new Date().toJSON().slice(0,10).replace(/-/g,'-');

@@ -16,8 +16,7 @@ public class MovimientoDinero {
     @ManyToOne
     @JoinColumn(name= "usuario_id" )
     private Usuario usuario;
-
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")// Anotacion para el atributo fecha del movimiento
     private Date fecha;
 
 //METODOS:

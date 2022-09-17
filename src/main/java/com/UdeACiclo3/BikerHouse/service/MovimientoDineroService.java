@@ -45,15 +45,30 @@ public class MovimientoDineroService {
         return true;
     }
 
-
-
-
-
-
-//// Metodo para traer todos los movimientos de una empresa por su id
+    // Metodo para traer todos los movimientos de una empresa por su id
     public ArrayList<MovimientoDinero> obtenerMovimientoByEmpresa(Integer id){
         return movimientoDineroRepository.findByEmpresa(id);
     }
+    //Obterner teniendo en cuenta el id del empleado
+    public ArrayList<MovimientoDinero> obtenerPorUsuario(Integer id) {
+        return movimientoDineroRepository.findByUsuario(id);
+    }
+
+    //Suma de todos los movimientos
+    public Long obtenrSumaMontos(){
+        return movimientoDineroRepository.SumarMonto();
+    }
+
+    //Suma de todos Movimientos por empleado
+    public Long MontosPorUsuario(Integer id){
+        return movimientoDineroRepository.MontosPorUsuario(id);
+    }
+
+    //Suma de todos Movimientos por empresa
+    public Long MontosPorEmpresa(Integer id){
+        return movimientoDineroRepository.MontosPorEmpresa(id);
+    }
+
 
 }
 

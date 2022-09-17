@@ -64,7 +64,7 @@
             </div>
         </div>
 
-
+        <!-----Scrip para que la fecha este al dia---->
         <div class="row">
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="usuario">Usuario responsable:</label>
@@ -76,7 +76,7 @@
             </div>
         </div>
 
-
+        <!-----Campo para la fecha---->
         <div class="row">
             <div class="form-group col-md-12">
                 <label class="col-md-3" for="fecha">Fecha del movimiento:</label>
@@ -98,13 +98,6 @@
     <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
 
 </div>
-<script th:inline="javascript">
-  window.onload=function(){
-  document.getElementById("fecha").value=new Date().toJSON().slice(0,10).replace(/-/g,'-');
-  }
-</script>
-
-
 </body>
 </html>
 
