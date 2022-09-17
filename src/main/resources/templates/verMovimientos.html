@@ -38,7 +38,7 @@
     </tr>
 
     <tr th:each="movimiento : ${movlist}">
-        <td th:text="${movimiento.id}"></td><
+        <td th:text="${movimiento.id}"></td>
         <td class="text-right" th:text="${#numbers.formatCurrency(movimiento.monto)}"></td>
         <td th:if="${movimiento.concepto=='1'}">Papeleria</td>
         <td th:if="${movimiento.concepto=='2'}">Servicios Publicos/privados</td>
@@ -48,11 +48,12 @@
         <td th:if="${movimiento.concepto=='6'}">Mobiliario</td>
         <td th:if="${movimiento.concepto=='7'}">Maquinaria y Equipo</td>
         <td th:if="${movimiento.concepto=='8'}">Nomina</td>
-        <td th:text="${movimiento.usuario.nombre} "></td>
-        <td th:text="${movimiento.id} "></td>
-        <td><button type="button" class=" btn btn-warning"><a th:href="@{/EditarMovimiento}">Editar</a></button></td>
-        <td><button type="button" class=" btn btn-danger"><a th:href="@{/EliminarMovimiento}">Eliminar</a></button></td>
+        <td th:text="${movimiento.usuario.nombre}"></td>
+        <td th:text="${#dates.format(movimiento.fecha, 'dd/MM/yyyy')}"></td>
+        <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarMovimiento/{id}(id=${movimiento.id})}">Editar</a></button></td>
+        <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarMovimiento/{id}(id=${movimiento.id})}">Eliminar</a></button></td>
     </tr>
+</table>
     <button type="button" class="btn btn-info"><a th:href="@{/AgregarMovimiento}">Agregar Movimiento</a></button>
 
     <button type="button" class="btn btn-primary"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button>
@@ -61,7 +62,7 @@
 
 
 
-</table>
+
 </div>
 <script th:inline="javascript">
         window.onload=function(){
