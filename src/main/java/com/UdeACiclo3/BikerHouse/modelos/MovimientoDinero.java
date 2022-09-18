@@ -14,8 +14,6 @@ public class MovimientoDinero {
     @JoinColumn(name= "usuario_id" )
     private Usuario usuario;
 
-    public MovimientoDinero() {
-    }
 //METODOS:
 
     // Metodo leerMonto
