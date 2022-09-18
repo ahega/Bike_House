@@ -78,15 +78,7 @@ public class Usuario {
     }
 
     public String getRol() {
-            if (rol == "Administrador" || rol == "Operario") {
-
-                return rol;
-            }
-            else{
-                return null;
-
-            }
-
+        return rol;
         }
 
 
