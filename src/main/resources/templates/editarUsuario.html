@@ -51,7 +51,7 @@ height: 500px;
         <br>
         <br>
         <br>
-        <form th:action="@{/GuardarUsuario}" th:object="${user}" method="post">
+        <form th:action="@{/ActualizarUsuario}" th:object="${user}" method="post">
             <!--Campo para Id Usuario-->
             <div class="row">
                 <div class="form-group col-md-12">
@@ -99,7 +99,12 @@ height: 500px;
                     </div>
                 </div>
             </div>
-
+            <!--Boton para enviar ejecutar el form y enviar todo -->
+            <div class="row">
+                <div class="col-md-2" align="center">
+                    <button class="btn btn-success ">Actualizar Usuario</button>
+                </div>
+            </div>
 
 
         </form>
@@ -107,12 +112,7 @@ height: 500px;
     </div>
     </div>
 
-    <!--Boton para enviar ejecutar el form y enviar todo -->
-    <div class="row">
-        <div class="col-md-2" align="center">
-            <button class="btn btn-success ">Actualizar Usuario</button>
-        </div>
-    </div>
+
 
 
 </div>

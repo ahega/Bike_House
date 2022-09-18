@@ -61,6 +61,25 @@ public class ControllerUsuario {
 
     }
 
+    @PostMapping("/ActualizarUsuario")
+    public String updateUsuario(@ModelAttribute("empl") Usuario usuario, RedirectAttributes redirectAttributes){
+
+        if(usuarioService.saveOrUpdateUsuario(usuario)){
+            redirectAttributes.addFlashAttribute("mensaje","updateOK");
+            return "redirect:/VerUsuarios";
+        }
+        redirectAttributes.addFlashAttribute("mensaje","updateError");
+        return "redirect:/EditarUsuario/"+usuario.getId();
+
+    }
+
+    @GetMapping("/Empresa/{id}/Usuarios") //Filtrar los Usuarios por empresa
+    public String verEmpleadosPorEmpresa(@PathVariable("id") Integer id, Model model){
+        List<Usuario> listaUsuarios = usuarioService.obtenerPorEmpresa(id);
+        model.addAttribute("emplelist",listaUsuarios);
+        return "verUsuarios"; //Llamamos al html con el emplelist de los empleados filtrados
+    }
+
     @GetMapping("/EliminarUsuario/{id}")
     public String eliminarUsuario(@PathVariable Integer id, RedirectAttributes redirectAttributes){
         if(usuarioService.deleteUsuario(id)){

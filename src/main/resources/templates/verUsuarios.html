@@ -57,7 +57,7 @@
             <td th:text="${usuario.empresa.nombre}"></td>
             <td th:if="${usuario.rol=='1'}">Administrativo</td>
             <td th:if="${usuario.rol=='2'}">Operativo</td>
-            <td><button type="button" class="btn btn-primary btn-sm"><a th:href="@{/usuario/{id}/Movimientos(id=${usuario.id})}">Ver Movimientos</a></button></td>
+            <td><button type="button" class="btn btn-primary btn-sm"><a th:href="@{/Usuario/{id}/Movimientos(id=${usuario.id})}">Ver Movimientos</a></button></td>
             <td><button type="button" class="btn btn-warning btn-sm"><a th:href="@{/EditarUsuario/{id}(id=${usuario.id})}">Editar</a></button></td>
             <td><button type="button" class="btn btn-danger btn-sm"><a th:href="@{/EliminarUsuario/{id}(id=${usuario.id})}">Eliminar</a></button></td>
         </tr>
