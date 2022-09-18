@@ -7,12 +7,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service //Le decimos a Sprint Boot que esta clase es de servicios
 public class EmpresaService {
     @Autowired //Conectamos esta clase con el repositorio de Empresa
-    EmpresaRepository empresaRepository; //Creamos un objeto tipoEmpresaRepository para poder usar los métodos que dicha clase hereda
+            EmpresaRepository empresaRepository; //Creamos un objeto tipoEmpresaRepository para poder usar los métodos que dicha clase hereda
 
     //Método que retornará la lista de empresas usando métodos heredados de JpaRepository
     public List<Empresa> getAllEmpresas(){
@@ -27,10 +26,12 @@ public class EmpresaService {
     }
 
     //Método para guardar o actualizar objetos de tipo Empresa
-    public Empresa saveOrUpdateEmpresa(Empresa empresa){
+    public boolean saveOrUpdateEmpresa(Empresa empresa) {
         Empresa emp = empresaRepository.save(empresa);
-       return emp;
-
+        if (empresaRepository.findById(emp.getId())!=null) {
+            return true;
+        }
+        return false;
     }
 
     //Método que me premita eliminar empresas resgiatradas tenciendo el id
