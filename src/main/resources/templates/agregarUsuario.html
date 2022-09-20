@@ -28,7 +28,10 @@ height: 500px;
 <body>
 
 <div class="container" align="left">
+
     <h2 class="text-success" align="center" >Agregar Usuario</h2>
+    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
+
     <br>
     <figure >
 
@@ -78,14 +81,36 @@ height: 500px;
                     <label class="col-md-3" for="rol">Rol del Usuario:</label>
                     <div class="col-md-6">
                         <select th:field="*{rol}" class="form-control" id="rol" required="required">
-                            <option th:value=1> Administrador </option>
-                            <option th:value=2> Operario </option>
+                            <option th:value="ROLE_ADMIN"> Administrador </option>
+                            <option th:value="ROLE_USER"> Operario </option>
                         </select>
                     </div>
                 </div>
             </div>
 
-            <!--Boton para enviar ejecutar el form y enviar todo -->
+            <!--Campo para contraseña-->
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="password">Contraseña del Usuario:</label>
+                    <div class="col-md-6">
+                        <input type="password" th:field="*{password}" class="form-control" id="password" required="required"></div>
+                </div>
+            </div>
+
+            <!--Campo para estado del Usuario-->
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label class="col-md-3" for="estado">Estado del Usuario:</label>
+                    <div class="col-md-6">
+                        <select th:field="*{estado}" class="form-control" id="estado" required="required">
+                            <option th:value=1> Activo </option>
+                            <option th:value=0> Inactivo </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!--Boton para enviar ejecutar el form y envia -->
             <div class="row">
                 <div class="col-md-2">
                     <button class="btn btn-success">Registrar Usuario</button>

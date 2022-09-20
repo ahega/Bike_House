@@ -21,9 +21,10 @@
 
 <div class="container">
   <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p><br>
-  <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
 
   <h1> Modifique aqui los datos del Movimiento</h1>
+  <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
+
   <br>
 
   <form th:action="@{/ActualizarMovimiento}" th:object="${mov}" method="post">

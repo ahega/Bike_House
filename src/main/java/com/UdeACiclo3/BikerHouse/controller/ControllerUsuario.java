@@ -5,6 +5,9 @@ import com.UdeACiclo3.BikerHouse.modelos.Usuario;
 import com.UdeACiclo3.BikerHouse.service.EmpresaService;
 import com.UdeACiclo3.BikerHouse.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +46,8 @@ public class ControllerUsuario {
 
     @PostMapping("/GuardarUsuario")
     public String guardarUsuario(Usuario usuario, RedirectAttributes redirectAttributes){
+        String passEncriptada=passwordEncoder().encode(usuario.getPassword());
+        usuario.setPassword(passEncriptada);
         if(usuarioService.saveOrUpdateUsuario(usuario)==true){
             redirectAttributes.addFlashAttribute("mensaje","saveOK");
             return "redirect:/VerUsuarios";
@@ -63,7 +68,8 @@ public class ControllerUsuario {
 
     @PostMapping("/ActualizarUsuario")
     public String updateUsuario(@ModelAttribute("empl") Usuario usuario, RedirectAttributes redirectAttributes){
-
+        String passEncriptada=passwordEncoder().encode(usuario.getPassword());
+        usuario.setPassword(passEncriptada);
         if(usuarioService.saveOrUpdateUsuario(usuario)){
             redirectAttributes.addFlashAttribute("mensaje","updateOK");
             return "redirect:/VerUsuarios";
@@ -90,6 +96,13 @@ public class ControllerUsuario {
     }
 
 
+/// Metodo para encriptar la contraseña
+
+   @Bean
+    public PasswordEncoder passwordEncoder(){
+
+        return new BCryptPasswordEncoder();
+    }
 
 
 
