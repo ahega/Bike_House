@@ -1,21 +1,24 @@
 package com.UdeACiclo3.BikerHouse.modelos;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="Movimientos")
 public class MovimientoDinero {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private long monto;
     private String concepto;
     @ManyToOne
     @JoinColumn(name= "usuario_id" )
     private Usuario usuario;
+    @DateTimeFormat(pattern="yyyy-MM-dd")// Anotacion para el atributo fecha del movimiento
+    private Date fecha;
 
-    public MovimientoDinero() {
-    }
 //METODOS:
 
     // Metodo leerMonto
@@ -50,13 +53,18 @@ public class MovimientoDinero {
     public MovimientoDinero() {
     }
 
-    public MovimientoDinero(long monto, String concepto, Usuario usuario) {
+
+    public MovimientoDinero(long monto, String concepto, Usuario usuario, Date fecha) {
+
         this.monto = monto;
         this.concepto = concepto;
         this.usuario = usuario;
+        this.fecha = fecha;
     }
 
     //GET Y SET PARA LEER Y MODIFICAR LOS ATRIBUTOS
+
+
     public int getId() {
         return id;
     }
@@ -87,5 +95,13 @@ public class MovimientoDinero {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 }

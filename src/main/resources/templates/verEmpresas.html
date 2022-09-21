@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http: //www.thymeleaf.org">
+<head>
+    <title>Lista de Empresas - Ciclo3</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <style>
+    a{
+        color:white;
+    }
+
+    a:hover {
+        color: black;
+        text-decoration:none;
+    }
+
+    body{
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    footer{
+        position: relative;
+        margin-top: -10px;
+        width: 100%;
+        padding: 10px;
+        clear: both;
+        background: #008;
+        text-align: center;
+        color: #fff;
+    }
+
+</style>
+
+</head>
+
+<body background="https://i.postimg.cc/hG4qwftR/Whats-App-Image-2022-09-14-at-7-45-08-PM.jpg">
+
+<div class="container" align="center">
+    <p th:inline="text" align="left">User:[[${#httpServletRequest.remoteUser}]]</p>
+
+    <h1 class="titulo"> BIENVENIDOS </h1>
+    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
+
+    <h4>Esta es su Lista de Empresas</h4>
+
+    <br>
+    <figure align="left">
+
+        <img src="https://image.freepik.com/vector-gratis/icono-vector-plano-empresa_9206-336.jpg"
+             alt="The head and torso of a dinosaur skeleton; it has a large head with long sharp teeth"
+             width="150"
+             height="90"
+             title="A T-Rex on display in the Manchester University Museum">
+    </figure>
+    <br>
+
+    <div class="container">
+        <!--Dibujamos la tabla-->
+        <br><table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Telefono</th>
+            <th>NIT</th>
+            <th>Empleados</th>
+            <th>Movimientos</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+
+        </tr>
+
+        <!--Llenamos la tabla dibujada-->
+        <!--En nuestro controller, creamos en viewEmpresa un modelo con un atributo llamado emplist donde esta guardada la lista de todas las empresas-->
+        <tr th:each="empresa : ${emplist}">
+            <td th:text="${empresa.id}"></td>
+            <td th:text="${empresa.nombre}"></td>
+            <td th:text="${empresa.direccion}"></td>
+            <td th:text="${empresa.telefono}"></td>
+            <td th:text="${empresa.NIT}"></td>
+            <td><button type="button" class="btn btn-info"><a th:href="@{/Empresa/{id}/Usuarios (id=${empresa.id})}">Ver</a></button></td>
+            <td><button type="button" class="btn btn-primary"><a th:href="@{/Empresa/{id}/Movimientos (id=${empresa.id})}">Ver</a></button></td>
+            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpresa/{id}(id=${empresa.id})}">Editar</a></button></td>
+            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpresa/{id}(id=${empresa.id})}">Eliminar</a></button></td>
+        </tr>
+    </table>
+
+        <!-- vamos a crear un boton que sirva para agregar nuevas empresas -->
+        <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpresa}">Agregar Nueva Empresa</a></button>
+        <br><br>
+        <button type="button" class="btn btn-primary"><a th:href="@{/VerUsuarios}">Ver lista de Empleados</a></button>
+
+    </div>
+
+    <script th:inline="javascript">
+    window.onload=function(){
+
+        var msg= [[${mensaje}]];
+        if (msg == "saveOK"){
+            Command : toastr["success"]("Empresa creada con éxito!")
+            }
+        else if (msg == "updateOK"){
+            Command : toastr["success"]("Empresa actualizada con éxito!")
+        }
+        else if (msg == "deleteOK"){
+            Command : toastr["error"]("Empresa eliminada con éxito!")
+        }
+        else if (msg == "deleteError"){
+            Command : toastr["error"]("Empresa no ha sido eliminada!")
+        }
+        toastr.options={
+            "positionClass": "toast-top-right",
+            "showDuration":"300",
+            "showMethod":"fadeIn",
+            "hideMethod":"fadeOut",
+        }
+    }
+
+</script>
+    <div class="Bike"> 🚴 🚴 🚴 🚴 🚴 🚴 🚴 🚴</div>
+    <footer class="pie-pagina">
+        <p>Proyecto MisionTIC 2022</p>
+        <p>Desarrollado por:</p>
+        <small>&copy; 2022 <b>Soft Team.</b> - Todos los Derechos Reservados y Patrocinados por Choclitos Limón.</small>
+    </footer>
+    </div>
+</body>
+
+</html>

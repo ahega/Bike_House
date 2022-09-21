@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name="Usuario")
 public class Usuario {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String nombre;
     private String correo;
@@ -14,18 +14,39 @@ public class Usuario {
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
     private String rol;
+    
+    private String password;
+
+    private Boolean estado;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String correo, Empresa empresa, String rol) {
+    public Usuario(String nombre, String correo, Empresa empresa, String  rol , String password, Boolean estado) {
         this.nombre = nombre;
         this.correo = correo;
         this.empresa = empresa;
         this.rol = rol;
+        this.password=password;
+        this.estado=estado;
     }
 
-    //Metodos
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+//Metodos
 
     //Metodo leerNombreEmpleado
     public String LeerNombreEmpleado() {
@@ -78,15 +99,7 @@ public class Usuario {
     }
 
     public String getRol() {
-            if (rol == "Administrador" || rol == "Operario") {
-
-                return rol;
-            }
-            else{
-                return null;
-
-            }
-
+        return rol;
         }
 
 
