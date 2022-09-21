@@ -9,10 +9,13 @@ import java.util.ArrayList;
 
 @Repository
 public interface MovimientoDineroRepository extends JpaRepository <MovimientoDinero,Integer>{
+
     //movimientos por empresa
+
 
     @Query(value="select * from movimientos where usuario_id in (select id from usuario where empresa_id= ?1)", nativeQuery = true)
     public abstract ArrayList<MovimientoDinero> findByEmpresa(Integer id);
+
 
     //movimientos por empleado
 
@@ -41,3 +44,6 @@ public interface MovimientoDineroRepository extends JpaRepository <MovimientoDin
 
 
 }
+
+}
+

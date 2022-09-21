@@ -53,7 +53,9 @@ public class MovimientoDinero {
     public MovimientoDinero() {
     }
 
+
     public MovimientoDinero(long monto, String concepto, Usuario usuario, Date fecha) {
+
         this.monto = monto;
         this.concepto = concepto;
         this.usuario = usuario;

@@ -1,13 +1,22 @@
 package com.UdeACiclo3.BikerHouse.service;
 
 
+
 import com.UdeACiclo3.BikerHouse.modelos.MovimientoDinero;
+
+import com.UdeACiclo3.BikerHouse.modelos.Empresa;
+import com.UdeACiclo3.BikerHouse.modelos.Usuario;
+
 import com.UdeACiclo3.BikerHouse.repository.MovimientoDineroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
+import java.util.Optional;
+
 
 @Service
 public class MovimientoDineroService {
@@ -22,6 +31,7 @@ public class MovimientoDineroService {
     }
     /*Editar/actualizar movimiento de Dinero de la lista; Si lo encontro id lo actualiza, si no lo crea*/
 
+
     public boolean crearOActualizarMovimientoDinero(MovimientoDinero movimientoDinero){
         MovimientoDinero mov= movimientoDineroRepository.save(movimientoDinero);
         if(movimientoDineroRepository.findById(mov.getId())!=null){
@@ -29,6 +39,7 @@ public class MovimientoDineroService {
         }
         return false;
     }
+    
     /*Traer movimiento de dinero por id*/
     public MovimientoDinero traerMovimientoDineroPorId(Integer id){
         return movimientoDineroRepository.findById(id).get();
@@ -41,6 +52,7 @@ public class MovimientoDineroService {
         }
         return true;
     }
+
 
     // Metodo para traer todos los movimientos de una empresa por su id
     public ArrayList<MovimientoDinero> obtenerMovimientoByEmpresa(Integer id){
@@ -71,3 +83,14 @@ public class MovimientoDineroService {
     }
 
 }
+
+
+
+//// Metodo para traer todos los movimientos de una empresa por su id
+    public ArrayList<MovimientoDinero> obtenerMovimientoByEmpresa(Integer id){
+        return movimientoDineroRepository.findByEmpresa(id);
+    }
+
+}
+
+
