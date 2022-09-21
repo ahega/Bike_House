@@ -1,16 +1,13 @@
 package com.UdeACiclo3.BikerHouse.service;
 
 
-import com.UdeACiclo3.BikerHouse.modelos.Empresa;
 import com.UdeACiclo3.BikerHouse.modelos.MovimientoDinero;
-import com.UdeACiclo3.BikerHouse.modelos.Usuario;
 import com.UdeACiclo3.BikerHouse.repository.MovimientoDineroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MovimientoDineroService {
@@ -69,5 +66,8 @@ public class MovimientoDineroService {
         return movimientoDineroRepository.MontosPorEmpresa(id);
     }
 
+    public Integer IdPorCorreo(String Correo){
+        return movimientoDineroRepository.IdPorCorreo(Correo);
+    }
 
 }

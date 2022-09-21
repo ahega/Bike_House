@@ -10,10 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -68,8 +65,13 @@ public class ControllerUsuario {
 
     @PostMapping("/ActualizarUsuario")
     public String updateUsuario(@ModelAttribute("empl") Usuario usuario, RedirectAttributes redirectAttributes){
-        String passEncriptada=passwordEncoder().encode(usuario.getPassword());
-        usuario.setPassword(passEncriptada);
+        Integer id=usuario.getId(); //Obtiene el id del objeto usuario
+        String Oldpassword=usuarioService.getUsuarioById(id).getPassword();
+        if(!usuario.getPassword().equals(Oldpassword)){
+            String passEncriptada=passwordEncoder().encode(usuario.getPassword());
+            usuario.setPassword(passEncriptada);
+        }
+
         if(usuarioService.saveOrUpdateUsuario(usuario)){
             redirectAttributes.addFlashAttribute("mensaje","updateOK");
             return "redirect:/VerUsuarios";
@@ -93,6 +95,13 @@ public class ControllerUsuario {
         }
     return "redirect:/VerUsuarios";
 
+    }
+
+    // Controlador que lleva al template no autorizado
+    @RequestMapping(value = "/Denegado")
+    public String accesoDenegado(){
+
+        return "accessDenied";
     }
 
 

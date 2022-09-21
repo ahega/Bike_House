@@ -1,22 +1,26 @@
-package com.UdeACiclo3.BikerHouse.Security;
+package com.UdeACiclo3.BikerHouse.security;
 
 
+import com.UdeACiclo3.BikerHouse.handler.CustomSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-public class SecConfig{
+public class SecConfig extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    CustomSuccessHandler customSuccessHandler;
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception{
@@ -27,12 +31,21 @@ public class SecConfig{
     }
 
 
-
+    @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests().anyRequest().authenticated().and()
-                .formLogin().permitAll()
+        http.authorizeRequests()
+                .antMatchers("/VerEmpresas/**").hasRole("ADMIN")
+                .antMatchers("/VerUsuarios/**").hasRole("ADMIN")
+                .antMatchers("/Empresas/**").hasRole("ADMIN")
+                .antMatchers("/Usuarios/**").hasRole("ADMIN")
+                .antMatchers("/VerMovimientos/**").hasAnyRole("ADMIN","USER")
+                .antMatchers("/AgregarMovimiento/**").hasAnyRole("ADMIN","USER")
+                .antMatchers("/EditarMovimiento/**").hasAnyRole("ADMIN","USER")
                 .and()
-                .logout().permitAll();
+                .formLogin().successHandler(customSuccessHandler)
+                .and()
+                .exceptionHandling().accessDeniedPage("/Denegado")
+                .and().logout().permitAll();
     }
 
 

@@ -45,6 +45,7 @@
 <body background="https://i.postimg.cc/hG4qwftR/Whats-App-Image-2022-09-14-at-7-45-08-PM.jpg">
 
 <div class="container" align="center">
+    <p th:inline="text" align="left">User:[[${#httpServletRequest.remoteUser}]]</p>
 
     <h1 class="titulo"> BIENVENIDOS </h1>
     <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>

@@ -28,6 +28,7 @@ height: 500px;
 <body>
 
 <div class="container" align="left">
+    <p th:inline="text" align="left">User:[[${#httpServletRequest.remoteUser}]]</p>
 
     <h2 class="text-success" align="center" >Agregar Usuario</h2>
     <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>

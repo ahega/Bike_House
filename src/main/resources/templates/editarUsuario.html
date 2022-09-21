@@ -28,6 +28,8 @@ height: 500px;
 <body>
 
 <div class="container" align="left">
+    <p th:inline="text" align="left">User:[[${#httpServletRequest.remoteUser}]]</p>
+
     <h2 class="text-success" align="center">Actualizar Datos del Usuario</h2>
     <!-- <figure >
     <br>
@@ -107,7 +109,7 @@ height: 500px;
                 <div class="form-group col-md-12">
                     <label class="col-md-3" for="password">Contraseña del Usuario:</label>
                     <div class="col-md-6">
-                        <input type="password" th:field="*{password}" class="form-control" id="password"></div>
+                        <input type="text" th:field="*{password}" class="form-control" id="password"></div>
                 </div>
             </div>
 
@@ -125,7 +127,7 @@ height: 500px;
             </div>
 
 
-            <!--Boton para enviar ejecutar el form y enviar todo -->
+            <!--Boton para enviar ejecutar el form y enviar -->
             <div class="row">
                 <div class="col-md-2" align="center">
                     <button class="btn btn-success ">Actualizar Usuario</button>
@@ -143,6 +145,11 @@ height: 500px;
 
 </div>
 
+<script th:inline="javascript">
+window.onload=function(){
+document.getElementById("password").type="password"}
+</script>
+
 <style>
 .transparente{
 opacity: 0.8;
@@ -151,6 +158,7 @@ filter: alpha(opacity=80);
 -khtml-opacity: 0.8;
 }
 </style>
+
 
 
 

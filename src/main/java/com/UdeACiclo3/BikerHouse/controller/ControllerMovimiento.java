@@ -1,8 +1,8 @@
 package com.UdeACiclo3.BikerHouse.controller;
 import com.UdeACiclo3.BikerHouse.service.UsuarioService;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +10,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.UdeACiclo3.BikerHouse.modelos.MovimientoDinero;
 import com.UdeACiclo3.BikerHouse.modelos.Usuario;
 import com.UdeACiclo3.BikerHouse.service.MovimientoDineroService;
+
+import javax.security.auth.message.AuthException;
 import java.util.List;
 
 @Controller
@@ -36,8 +38,11 @@ public class ControllerMovimiento {
         MovimientoDinero movimiento= new MovimientoDinero();
         model.addAttribute("mov",movimiento);
         model.addAttribute("mensaje",mensaje);
-        List<Usuario>listaUsuarios= usuarioService.getAllUsuarios();
-        model.addAttribute("usuariolist",listaUsuarios);
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String correo=auth.getName();
+        Integer idUsuario=movimientoDineroService.IdPorCorreo(correo);
+        //List<Usuario>listaUsuarios= usuarioService.getAllUsuarios();
+        model.addAttribute("idUsuario",idUsuario);
         return "agregarMovimiento";
     }
 

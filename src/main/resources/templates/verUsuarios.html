@@ -24,6 +24,8 @@
 
 
 <div class="container mt-3" align="center">
+    <p th:inline="text" align="left">User:[[${#httpServletRequest.remoteUser}]]</p>
+
     <h2 class="text-success">Lista de Usuarios</h2>
     <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
 
@@ -58,8 +60,8 @@
             <td th:text="${usuario.nombre}"></td>
             <td th:text="${usuario.correo}"></td>
             <td th:text="${usuario.empresa.nombre}"></td>
-            <td th:if="${usuario.rol=='1'}">Administrativo</td>
-            <td th:if="${usuario.rol=='2'}">Operativo</td>
+            <td th:if="${usuario.rol=='ROLE_ADMIN'}">Administrativo</td>
+            <td th:if="${usuario.rol=='ROLE_USER'}">Operativo</td>
             <td th:if="${usuario.estado==true}">Activo</td>
             <td th:if="${usuario.estado==false}">Inactivo</td>
             <td><button type="button" class="btn btn-primary btn-sm"><a th:href="@{/Usuario/{id}/Movimientos(id=${usuario.id})}">Ver Movimientos</a></button></td>
