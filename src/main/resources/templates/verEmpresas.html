@@ -124,61 +124,62 @@
     </a>
 </nav>
 
-<!--Opción de Cerrar Sesion-->
-<p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p>
-<button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
-
-<!--Titulo Lista Empresas + Bienvenida-->
 <div class="container" align="center">
-    <h1 class="titulo"> BIENVENIDOS </h1>
-    <h4>Esta es su Lista de Empresas</h4>
+    <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
 
-    <br>
-    <figure>
-        <img src="https://image.freepik.com/vector-gratis/icono-vector-plano-empresa_9206-336.jpg"
+    <p th:inline="text" align="left">User:[[${#httpServletRequest.remoteUser}]]</p>
+
+    <h1 class="titulo"> BIENVENIDOS </h1>
+
+
+    <figure align="center">
+
+        <img src="https://i.postimg.cc/Bvf4Ht9m/empresas.png"
              alt="The head and torso of a dinosaur skeleton; it has a large head with long sharp teeth"
              width="150"
              height="90"
              title="A T-Rex on display in the Manchester University Museum">
     </figure>
-    <br>
-    <!--Dibujamos la tabla-->
-    <br><table class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Dirección</th>
-        <th>Telefono</th>
-        <th>NIT</th>
-        <th>Empleados</th>
-        <th>Movimientos</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
-    </tr>
+    <h3 align="center" >Esta es su Lista de Empresas</h3>
 
-    <!--Llenamos la tabla dibujada-->
-    <!--En nuestro controller, creamos en viewEmpresa un modelo con un atributo llamado emplist donde esta guardada la lista de todas las empresas-->
-    <tr th:each="empresa : ${emplist}">
-        <td th:text="${empresa.id}"></td>
-        <td th:text="${empresa.nombre}"></td>
-        <td th:text="${empresa.direccion}"></td>
-        <td th:text="${empresa.telefono}"></td>
-        <td th:text="${empresa.NIT}"></td>
-        <td><button type="button" class="btn btn-info"><a th:href="@{/Empresa/{id}/Empleados (id=${empresa.id})}">Ver</a></button></td>
-        <td><button type="button" class="btn btn-primary"><a th:href="@{/Empresa/{id}/Movimientos (id=${empresa.id})}">Ver</a></button></td>
-        <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpresa/{id}(id=${empresa.id})}">Editar</a></button></td>
-        <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpresa/{id}(id=${empresa.id})}">Eliminar</a></button></td>
-    </tr>
-</table>
+    <div class="container">
+        <!--Dibujamos la tabla-->
+        <br><table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Telefono</th>
+            <th>NIT</th>
+            <th>Empleados</th>
+            <th>Movimientos</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
 
-    <!-- vamos a crear un boton que sirva para agregar nuevas empresas -->
-    <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpresa}">Agregar Nueva Empresa</a></button>
-    <br><br>
-    <button type="button" class="btn btn-primary"><a th:href="@{/VerEmpleados}">Ver lista de Empleados</a></button>
-</div>
+        </tr>
 
-<!--script para avisos-->
-<script th:inline="javascript">
+        <!--Llenamos la tabla dibujada-->
+        <!--En nuestro controller, creamos en viewEmpresa un modelo con un atributo llamado emplist donde esta guardada la lista de todas las empresas-->
+        <tr th:each="empresa : ${emplist}">
+            <td th:text="${empresa.id}"></td>
+            <td th:text="${empresa.nombre}"></td>
+            <td th:text="${empresa.direccion}"></td>
+            <td th:text="${empresa.telefono}"></td>
+            <td th:text="${empresa.NIT}"></td>
+            <td><button type="button" class="btn btn-info"><a th:href="@{/Empresa/{id}/Usuarios (id=${empresa.id})}">Ver</a></button></td>
+            <td><button type="button" class="btn btn-primary"><a th:href="@{/Empresa/{id}/Movimientos (id=${empresa.id})}">Ver</a></button></td>
+            <td><button type="button" class="btn btn-warning"><a th:href="@{/EditarEmpresa/{id}(id=${empresa.id})}">Editar</a></button></td>
+            <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpresa/{id}(id=${empresa.id})}">Eliminar</a></button></td>
+        </tr>
+    </table>
+
+        <!-- vamos a crear un boton que sirva para agregar nuevas empresas -->
+        <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpresa}">Agregar Nueva Empresa</a></button>
+        <br><br>
+        <button type="button" class="btn btn-primary"><a th:href="@{/VerUsuarios}">Ver lista de Empleados</a></button>
+
+    </div>
+    <script th:inline="javascript">
     window.onload=function(){
 
         var msg= [[${mensaje}]];
@@ -203,41 +204,43 @@
     }
 </script>
 
-<!--Emoji-->
-<marquee>
-    <span class="emoji"> 🚵 </span>
-</marquee>
+    <!--Emoji-->
+    <marquee>
+        <span class="emoji"> 🚵 </span>
+    </marquee>
 
-<!-- footer Angela-->
-<small>
-    <footer class="pie-pagina">
-        <div class="grupo-1">
-            <div class="box" align="center">
-                <p>CONTACTENOS</p>
-                <p>🤳: 942016908</p>
-                <P>📧: bikehouse@group.es</P>
-            </div>
-            <div class="box" align="center">
-                <p>SOBRE NOSOTROS</p>
-                <p>Proyecto MisionTIC 2022 para la creación de un</p>
-                <p>aplicativo web para que un administrador pueda</p>
-                <p>gestionar los ingresos y egresos de su empresa.</p>
-            </div>
-            <div class="box" align="center">
-                <p>SIGUENOS</p>
-                <div class="red-social" align="center">
-                    <a href="#" class="fa fa-facebook"></a>
-                    <a href="#" class="fa fa-instagram"></a>
-                    <a href="#" class="fa fa-youtube"></a>
-                    <a href="#" class="fa fa-twitter"></a>
+    <!-- footer Angela-->
+    <small>
+        <footer class="pie-pagina">
+            <div class="grupo-1">
+                <div class="box" align="center">
+                    <p>CONTACTENOS</p>
+                    <p>🤳: 942016908</p>
+                    <P>📧: angelavivianyzapatamarin@gmail.com</P>
+                    <P>📧: angieari97@hotmail.com</P>
+                    <P>📧: anfperezcr@unal.edu.co</P>
+                </div>
+                <div class="box" align="center">
+                    <p>SOBRE NOSOTROS</p>
+                    <p>Proyecto MisionTIC 2022 para la creación de un</p>
+                    <p>aplicativo web para que un administrador pueda</p>
+                    <p>gestionar los ingresos y egresos de su empresa.</p>
+                </div>
+                <div class="box" align="center">
+                    <p>SIGUENOS</p>
+                    <div class="red-social" align="center">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-youtube"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="grupo-2">
-            <small>&copy; 2022 <b>Soft Team</b> - Todos los Derechos Reservados.</small>
-        </div>
-    </footer>
-</small>
-
+            <div class="grupo-2">
+                <small>&copy; 2022 <b>Soft Team</b> - Todos los Derechos Reservados.</small>
+            </div>
+        </footer>
+    </small>
+</div>
 </body>
 </html>

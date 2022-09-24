@@ -70,6 +70,7 @@
     <h2> Agregue aqui los datos de Empresa</h2>
     <br>
 
+
     <!--Crear formulario para llenar los datos de la empresa y guardarlo en el objeto emp -->
     <form th:action="@{/GuardarEmpresa}" th:object="${emp}" method="post">
         <!--Campo para nombre-->
@@ -109,12 +110,13 @@
                 </div>
             </div>
 
-            <!--Boton para enviar todo y ejecutar accion -->
-            <div class="row">
-                <div class="col-md-2">
-                    <button class="btn btn-success">Crear Empresa</button>
-                </div>
+        <!--Boton para ejecutar la accion-->
+        <div class="row">
+            <div class="col-md-2">
+                <button class="btn btn-success">Crear Empresa</button>
             </div>
+        </div>
+        
     </form>
 
     <br>

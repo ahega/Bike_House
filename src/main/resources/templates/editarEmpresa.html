@@ -70,6 +70,7 @@
     <h2> Edite aqui los datos de Empresa</h2>
     <br>
 
+
     <!--Crear formulario para llenar los datos de la empresa y guardarlo en el objeto emp -->
     <form th:action="@{/ActualizarEmpresa}" th:object="${emp}" method="post">
 
@@ -81,6 +82,8 @@
                     <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
             </div>
         </div>
+
+
 
         <!--Campo para nombre-->
         <div class="row">
@@ -118,18 +121,20 @@
             </div>
         </div>
 
+
         <!--Boton para enviar todo y ejecutar accion -->
         <div class="row">
             <div class="col-md-2">
                 <button class="btn btn-success">Actualizar Empresa</button>
             </div>
         </div>
+
     </form>
 
     <br>
     <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
-</div>
 
+</div>
 <!--Emoji-->
 <marquee>
     <span class="emoji"> 🚴‍♀️ </span>
