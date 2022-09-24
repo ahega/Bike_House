@@ -181,8 +181,6 @@ public class ControllerEmpresa {
             return "Se elimino el movimiento de la empresa con id" + id;
         }
         return "No se pudo eliminar el movimiento con id" + id;
-
-
     }*/
 }
 
