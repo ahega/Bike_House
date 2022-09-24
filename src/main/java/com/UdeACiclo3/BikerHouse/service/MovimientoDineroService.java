@@ -82,14 +82,10 @@ public class MovimientoDineroService {
         return movimientoDineroRepository.IdPorCorreo(Correo);
     }
 
-}
 
 
 
-//// Metodo para traer todos los movimientos de una empresa por su id
-    public ArrayList<MovimientoDinero> obtenerMovimientoByEmpresa(Integer id){
-        return movimientoDineroRepository.findByEmpresa(id);
-    }
+
 
 }
 

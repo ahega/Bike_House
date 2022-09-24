@@ -45,5 +45,5 @@ public interface MovimientoDineroRepository extends JpaRepository <MovimientoDin
 
 }
 
-}
+
 
