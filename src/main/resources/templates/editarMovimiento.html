@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Editar Movimiento - Ciclo3</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+
+  <style>
+    /*css Lorena*/
+    body{
+        font-family:Serif;
+        font-sinze:15px;
+        margin:0.1px;
+
+    }
+    nav,header{
+        background-color:#004173;
+        text-transform:uppercase;
+        height:18vh;
+    }
+      nav.button{
+       background-position: center;
+       margin-top:20px;
+       margin:10px;
+       background-size:contain;
+    }
+    a{
+        color:white;
+    }
+    a:hover {
+        color: white;
+        text-decoration:none;
+            }
+    #tabla{
+        background-image: url("https://i.postimg.cc/RqQxCqZL/Whats-App-Image-2022-09-14-at-7-45-08-PM-removebg-preview.png" );
+        background-position: center;
+        background-repeat: no-repeat;
+        height:70vh;
+        background-size:contain;
+        opacity:1;
+    }
+    td{
+        background-color:white;
+        opacity:0.9;
+        background-position: center;
+        background-size:contain;
+    }
+    th{
+        background-color:#004173;
+        opacity:0.9;
+        color:white;
+
+    }
+    p{
+        background-color:#004173;
+        opacity:0.9;
+        color:white;
+
+    }
+</style>
+</head>
+<body>
+<header>
+  <!--cabecera de la pagina +botones-->
+  <nav class="navbar stick-top navbar-light bg-light ">
+    <a class="logo" href="/logout">
+      <img src="https://i.postimg.cc/WbspFMJF/biker-logo.png" alt="Biker-House" with="100%" height="100%" >
+    </a>
+  </nav>
+</header>
+<section>
+
+<div class="container">
+  <p th:inline="text" class="text-right">User: [[${#httpServletRequest.remoteUser}]]</p><br>
+
+  <h1> Modifique aqui los datos del Movimiento</h1>
+  <button type="button" class="btn btn-danger" style="float:right"><a th:href="@{/logout}">Cerrar Sesión</a></button>
+
+  <br>
+
+  <form th:action="@{/ActualizarMovimiento}" th:object="${mov}" method="post">
+
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-3" for="id">ID del movimiento:</label>
+        <div class="col-md-6">
+          <input type="text" th:field="*{id}" class="form-control" id="id" required="required" readonly></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-3" for="concepto">Concepto del Movimiento:</label>
+        <div class="col-md-6">
+          <select th:field="*{concepto}" class="form-control" id="concepto" required="required">
+            <option th:value=1>Papeleria</option>
+            <option th:value=2>Servicios Publicos/Privados</option>
+            <option th:value=3>Operativos</option>
+            <option th:value=4>Caja menor</option>
+            <option th:value=5>Tributario</option>
+            <option th:value=6>Mobiliario</option>
+            <option th:value=7>Maquinaria y Equipo</option>
+            <option th:value=8>Nomina</option>
+
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-3" for="monto">Valor del movimiento:</label>
+        <div class="col-md-6">
+          <input type="number" th:field="*{monto}" class="form-control" id="monto" required="required"></div>
+      </div>
+    </div>
+
+    <!-----Scrip para que la fecha este al dia---->
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-3" for="usuario">Usuario responsable:</label>
+        <div class="col-md-6">
+          <select th:field="*{usuario}" class="form-control" id="usuario" required="required" >
+            <option th:each="usuario: ${usuariolist}" th:text="${usuario.nombre}"th:value="${usuario.id}"></option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-----Campo para la fecha---->
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label class="col-md-3" for="fecha">Fecha del movimiento:</label>
+        <div class="col-md-6">
+          <input type="date" th:field="*{fecha}" class="form-control" id="fecha" required="required" readonly></div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-2">
+        <button class="btn btn-success">Registrar Movimiento</button>
+      </div>
+    </div>
+
+  </form>
+
+  <br>
+  <a href="javascript: history.go(-1)" class="btn btn-info" role="button">Atrás</a>
+
+</div>
+</body>
+</html>
