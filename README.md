@@ -1,4 +1,6 @@
-# SoftTeamProyectCiclo3
+# SoftTeamProyectCiclo3 Link Youtube funcionamiento del proyecto 
 Proyecto ciclo 3 UDEA Mintic por el grupo Soft Team
 
-// Estoy modificando el archivo README.md para probar que pasa con la RamaAngie
+https://www.youtube.com/watch?v=hKXmdKS2yYg
+
+
